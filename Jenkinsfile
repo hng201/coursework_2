@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+	tools {NodeJs "node"}
 	stages {
 		stage('Clone Repository') {
 			steps {
@@ -7,11 +8,6 @@ pipeline {
 				checkout scm
 			}
 		}
-		stage('Build') {
-			steps {
-				sh "node server.js"
-			}
-		}	
 		stage('SonarQube Test') {
 			environment {
 				scannerHome = tool 'SonarQubeScanner'
