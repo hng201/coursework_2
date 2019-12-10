@@ -7,6 +7,11 @@ pipeline {
 				checkout scm
 			}
 		}
+		stage('Build') {
+			steps {
+				sh "node server.js"
+			}
+		}	
 		stage('SonarQube Test') {
 			environment {
 				scannerHome = tool 'SonarQubeScanner'
