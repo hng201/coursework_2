@@ -9,7 +9,7 @@ pipeline {
 		}
 		stage('SonarQube Test') {
 			environment {
-				def scannerHome = toll 'SonarQubeScanner'
+				def scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
 				withSonarQubeEnv('sonarqube') {
