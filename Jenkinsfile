@@ -9,13 +9,11 @@ pipeline {
 		}
 		stage('SonarQube Test') {
 			environment {
-				scannerHome = toll 'SonarQubeScanner'
+				def scannerHome = toll 'SonarQubeScanner'
 			}
 			steps {
-				ws(./) {
-					withSonarQubeEnv('sonarqube') {
-						sh "{scannerHome}/bin/sonar-scanner"
-					}
+				withSonarQubeEnv('sonarqube') {
+					sh "{scannerHome}/bin/sonar-scanner"
 				}
 				
 				//Wait for 10 minutes before aborting build
