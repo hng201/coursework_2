@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-	tools {nodejs "node"}
 	stages {
 		stage('Clone Repository') {
 			steps {
@@ -13,14 +12,16 @@ pipeline {
 				scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
-				withSonarQubeEnv('sonarqube') {
-					sh "${scannerHome}/bin/sonar-scanner"
-				}
+				nodejs(nodeJSInstallationName: 'node', configId: '') {
+					withSonarQubeEnv('sonarqube') {
+						sh "${scannerHome}/bin/sonar-scanner"
+					}
 				
-				//Wait for 10 minutes before aborting build
-				//if the build does not complete
-				timeout(time: 10, unit: 'MINUTES') {
-					waitForQualityGate abortPipeline: true
+					//Wait for 10 minutes before aborting build
+					//if the build does not complete
+					timeout(time: 10, unit: 'MINUTES') {
+						waitForQualityGate abortPipeline: true
+					}
 				}
 			}
 		}
