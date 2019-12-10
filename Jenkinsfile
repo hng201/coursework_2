@@ -12,8 +12,8 @@ pipeline {
 				scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
-				nodejs(nodeJSInstallationName: 'node', configId: '') {
-					withSonarQubeEnv('sonarqube') {
+					tools {nodejs "node"}
+						withSonarQubeEnv('sonarqube') {
 						sh "${scannerHome}/bin/sonar-scanner"
 					}
 				
