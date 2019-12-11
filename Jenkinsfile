@@ -11,8 +11,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh "apk add nodejs"
-				sh "node server.js"
-				sh "pkill -f node"
+				sh "node server.js; pkill -f node"
 			}
 		}
 		stage('SonarQube Test') {
