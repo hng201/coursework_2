@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	environment {
+		app = ''
+	}
 	stages {
 		stage('Clone Repository') {
 			steps {
@@ -22,7 +25,7 @@ pipeline {
 		stage('Build Image') {
 			steps {
 				script {
-					docker.build("coursework_2/cw2-node")	
+					app = docker.build("coursework_2/cw2-node")	
 				}
 			}
 		}
