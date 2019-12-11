@@ -33,7 +33,7 @@ pipeline {
 			steps {
 				script {
 					app.inside {
-						sh "echo 'Image is running successfully"
+						sh "echo 'Image is running successfully'"
 					}
 				}
 			}
