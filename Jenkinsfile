@@ -6,6 +6,12 @@ pipeline {
 				//Checks that the git repo has cloned to workspace
 				checkout scm
 			}
+		
+		}
+		stage('Build') {
+			steps {
+				sh "node server.js"
+			}
 		}
 		stage('SonarQube Test') {
 			environment {
