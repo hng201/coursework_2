@@ -25,7 +25,7 @@ pipeline {
 		stage('Build Image') {
 			steps {
 				script {
-					app = docker.build("coursework_2/cw2-node")	
+					app = docker.build("hng201/coursework_2")	
 				}
 			}
 		}
