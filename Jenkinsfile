@@ -8,23 +8,19 @@ pipeline {
 			}
 		
 		}
-		stage('Build') {
-			steps {
-				sh "apk add nodejs"
-				sh "node server.js"
-				sh "^C"
-			}
-		}
 		stage('SonarQube Test') {
 			environment {
 				scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
-						withSonarQubeEnv('sonarqube') {
-						sh "${scannerHome}/bin/sonar-scanner"
-					}
-				
+				sh "apk add nodejs"
+				withSonarQubeEnv('sonarqube') {									sh "${scannerHome}/bin/sonar-scanner"
 				}
+				timeout(time: 5, unit: 'MINUTES') {
+         			   waitForQualityGate abortPipeline: true
+        			}
+				
 			}
+		}
 	}
 }
