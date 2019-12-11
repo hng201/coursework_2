@@ -26,11 +26,14 @@ pipeline {
 			}
 		}
 		stage('Build Image') {
-			script {
-				app = docker.build("coursework_2/cw2-node")	
+			steps {
+				docker.build("coursework_2/cw2-node")	
 			}
 		}
 		stage('Test Image') {
+			environment {
+				app = docker.build("coursework_2/cw2-node")
+			}
 			steps {
 				script {
 					app.inside {
