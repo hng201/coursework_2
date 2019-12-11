@@ -11,7 +11,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh "export PATH=/usr/local/bin:$PATH"
+				sh "npm install"
 				sh "node server.js"
 			}
 		}
