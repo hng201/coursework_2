@@ -6,7 +6,6 @@ pipeline {
 	stages {
 		stage('Clone Repository') {
 			steps {
-				//Checks that the git repo has cloned to workspace
 				checkout scm
 			}
 		
@@ -20,6 +19,9 @@ pipeline {
 				withSonarQubeEnv('sonarqube') {					
 					sh "${scannerHome}/bin/sonar-scanner"	
 				}
+				timeout(time: 10, unit: 'MINUTES') {
+         			   waitForQualityGate abortPipeline: true
+        			}
 			}
 		}
 		stage('Build Image') {
