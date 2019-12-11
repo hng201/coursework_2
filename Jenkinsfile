@@ -32,16 +32,20 @@ pipeline {
 		}
 		stage('Test Image') {
 			steps {
-				app.inside {
-					sh "node server.js || exit 1"
+				script {
+					app.inside {
+						sh "node server.js || exit 1"
+					}
 				}
 			}
 		}	
 		stage('Push Image') {
 			steps {
-				docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-					app.push("${env.BUILD_NUMBER}")
-					app.push("latest")
+				script {
+					docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+						app.push("${env.BUILD_NUMBER}")
+						app.push("latest")
+					}
 				}
 			}
 		}
