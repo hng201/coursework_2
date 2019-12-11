@@ -11,7 +11,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh "node server.js"
+				sh "nodejs server.js"
 			}
 		}
 		stage('SonarQube Test') {
