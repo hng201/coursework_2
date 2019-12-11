@@ -1,6 +1,5 @@
 pipeline {
 	agent any
-	tools {nodejs "node"}
 	stages {
 		stage('Clone Repository') {
 			steps {
@@ -11,6 +10,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
+				sh "apk add nodejs"
 				sh "npm install"
 				sh "node server.js"
 			}
