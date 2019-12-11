@@ -12,6 +12,7 @@ pipeline {
 			steps {
 				sh "apk add nodejs"
 				sh "node server.js"
+				sh "^C"
 			}
 		}
 		stage('SonarQube Test') {
