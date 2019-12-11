@@ -11,7 +11,8 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh "nodejs server.js"
+				sh "export PATH=/usr/local/bin:$PATH"
+				sh "node server.js"
 			}
 		}
 		stage('SonarQube Test') {
