@@ -11,7 +11,6 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh "apk add nodejs"
-				sh "npm install"
 				sh "node server.js"
 			}
 		}
