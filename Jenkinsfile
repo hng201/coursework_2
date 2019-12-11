@@ -27,9 +27,6 @@ pipeline {
 			}
 		}
 		stage('Test Image') {
-			environment {
-				app = docker.build("coursework_2/cw2-node")
-			}
 			steps {
 				script {
 					app.inside {
