@@ -16,10 +16,6 @@ pipeline {
 				sh "apk add nodejs"
 				withSonarQubeEnv('sonarqube') {									sh "${scannerHome}/bin/sonar-scanner"
 				}
-				timeout(time: 5, unit: 'MINUTES') {
-         			   waitForQualityGate abortPipeline: true
-        			}
-				
 			}
 		}
 	}
