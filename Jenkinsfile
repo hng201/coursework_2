@@ -27,7 +27,9 @@ pipeline {
 		}
 		stage('Build Image') {
 			steps {
-				docker.build("coursework_2/cw2-node")	
+				script {
+					docker.build("coursework_2/cw2-node")	
+				}
 			}
 		}
 		stage('Test Image') {
