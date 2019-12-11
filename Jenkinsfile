@@ -11,7 +11,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh "apk add nodejs"
-				sh "node server.js || exit 1"
+				sh "node server.js && ^C"
 			}
 		}
 		stage('SonarQube Test') {
@@ -39,7 +39,7 @@ pipeline {
 			steps {
 				script {
 					app.inside {
-						sh "node server.js || exit 1"
+						sh "node server.js && ^C"
 					}
 				}
 			}
