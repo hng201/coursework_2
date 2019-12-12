@@ -2,6 +2,7 @@ pipeline {
 	agent any
 	environment {
 		app = ''
+                remote= ':'
 	}
 	stages {
 		stage('Clone Repository') {
@@ -52,7 +53,12 @@ pipeline {
 		}
 	        stage('Update Image') {
 			steps {
-				sh "ssh -o StrictHostKeyChecking=no azureuser@40.78.135.135 'kubectl set image deployments/coursework2-deployment coursework2-deployement=hng201/devops-cw:latest'" 
+				remote.name = 'coursework2-node'
+				remote.host = 'azure'
+				remote.user = 'azureuser'
+				remote.password = ''
+				remote.allowAnyHosts = true
+				sshCommand remote: remote, command: "kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest"
 			}
 		}
 	}
