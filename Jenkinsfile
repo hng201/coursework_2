@@ -50,5 +50,10 @@ pipeline {
 				}
 			}
 		}
+	        stage('Update Image') {
+			steps {
+				sh "ssh azureuser@40.78.135.135 'kubectl set image deployments/coursework2-deployment coursework2-deployement=hng201/devops-cw:latest 
+			}
+		}
 	}
 }
