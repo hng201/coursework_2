@@ -3,6 +3,11 @@ pipeline {
 	environment {
 		app = ''
                 remote= ':'
+		remote.name = 'coursework2-node'
+                remote.host = 'azure'
+                remote.user = 'azureuser'
+                remote.password = ''
+                remote.allowAnyHosts = true
 	}
 	stages {
 		stage('Clone Repository') {
@@ -53,11 +58,6 @@ pipeline {
 		}
 	        stage('Update Image') {
 			steps {
-				remote.name = 'coursework2-node'
-				remote.host = 'azure'
-				remote.user = 'azureuser'
-				remote.password = ''
-				remote.allowAnyHosts = true
 				sshCommand remote: remote, command: "kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest"
 			}
 		}
