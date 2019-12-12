@@ -19,4 +19,5 @@ www.listen(8080,function () {
     startTime = new Date();;
     host = process.env.HOSTNAME;
     console.log ("Hello World Started At:",startTime, "| Running On: " ,host, "\n" );
+    console.log ("This is an updated version");
 });
