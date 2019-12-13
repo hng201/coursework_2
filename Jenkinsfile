@@ -59,7 +59,7 @@ pipeline {
 		}
 	        stage('Update Image') {
 			steps {
-				sh "ssh azureuser@40.78.135.135 kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest" 
+				sshCommand remote: remote, command: "kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest" 
 			}
 		}
 	}
