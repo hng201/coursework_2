@@ -1,6 +1,6 @@
 def remote= [:]
         remote.name = 'coursework2-node'
-        remote.host = 'azure'
+        remote.host = 'coursework2-node'
         remote.user = 'azureuser'
         remote.password = ''
         remote.allowAnyHosts = true
@@ -59,7 +59,7 @@ pipeline {
 		}
 	        stage('Update Image') {
 			steps {
-				sshCommand remote: remote, command: "sudo kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest", sudo: true 
+				sshCommand remote: remote, command: "kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest" 
 			}
 		}
 	}
