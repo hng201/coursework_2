@@ -2,13 +2,13 @@ pipeline {
 	agent any
 	environment {
 		app = ''
-                remote= ':'
-		remote.name = 'coursework2-node'
-                remote.host = 'azure'
-                remote.user = 'azureuser'
-                remote.password = ''
-                remote.allowAnyHosts = true
 	}
+	def remote= [:]
+        remote.name = 'coursework2-node'
+        remote.host = 'azure'
+        remote.user = 'azureuser'
+        remote.password = ''
+        remote.allowAnyHosts = true
 	stages {
 		stage('Clone Repository') {
 			steps {
