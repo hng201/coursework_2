@@ -59,7 +59,7 @@ pipeline {
 		}
 	        stage('Update Image') {
 			steps {
-				sshCommand remote: remote, command: "sudo kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest"
+				sshCommand remote: remote, command: "sudo kubectl set image deployments/coursework2-deployment coursework2-deployment=hng201/devops-cw:latest", sudo: true 
 			}
 		}
 	}
