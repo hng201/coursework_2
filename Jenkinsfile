@@ -1,6 +1,6 @@
 def remote= [:]
         remote.name = 'coursework2-node'
-        remote.host = 'coursework2-node'
+        remote.host = '40.78.135.135'
         remote.user = 'azureuser'
         remote.password = ''
         remote.allowAnyHosts = true
